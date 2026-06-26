@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figma Mobile App Designs Portfolio</title>
+    <title>Figma Design Portfolio - UI/UX Designer</title>
     <style>
         * {
             margin: 0;
@@ -13,321 +13,643 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0d0221 0%, #1a0033 50%, #0f0f3d 100%);
+            background: linear-gradient(135deg, #0a0014 0%, #1a0a2e 50%, #0d0620 100%);
             min-height: 100vh;
-            padding: 20px;
-            transition: background 0.5s ease;
+            padding: 40px 20px;
+            color: #fff;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
-        header {
+        /* HEADER */
+        .header-top {
             text-align: center;
-            color: white;
-            margin-bottom: 50px;
-            padding: 40px 20px;
+            margin-bottom: 30px;
+        }
+
+        .designer-badge {
+            display: inline-block;
+            background: rgba(176, 19, 176, 0.3);
+            border: 1px solid #b013b0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #b013b0;
+            margin-bottom: 20px;
             transition: all 0.4s ease;
         }
 
-        header h1 {
-            font-size: 2.5rem;
+        .designer-badge:hover {
+            background: rgba(176, 19, 176, 0.6);
+            box-shadow: 0 0 15px rgba(176, 19, 176, 0.4);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 800;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px #00f7ff, 0 0 40px #ff006e;
-            transition: transform 0.4s ease, text-shadow 0.4s ease;
-        }
-        
-        header h1:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 30px #00f7ff, 0 0 60px #ff006e, 0 0 20px #b013b0;
+            letter-spacing: -2px;
         }
 
-        header p {
+        .main-title span {
+            background: linear-gradient(135deg, #ff006e, #00f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
             font-size: 1.1rem;
-            opacity: 0.95;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-        
-        header:hover p {
-            opacity: 1;
-            transform: translateY(-3px);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            color: #a0a0d0;
             margin-bottom: 40px;
         }
 
-        .project-card {
-            background: #1a1a3f;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.1), inset 0 0 20px rgba(255, 0, 110, 0.05);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-            cursor: pointer;
-            border: 3px solid #00f7ff;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(0, 247, 255, 0.4), 0 0 40px rgba(255, 0, 110, 0.3), inset 0 0 30px rgba(0, 247, 255, 0.1);
-            border-color: #ff006e;
-        }
-
-        .project-header {
-            background: linear-gradient(135deg, #ff006e 0%, #00f7ff 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
-        }
-
-        .project-header h2 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-            transition: transform 0.4s ease, text-shadow 0.4s ease;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        
-        .project-card:hover .project-header h2 {
-            transform: scale(1.1);
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-        }
-
-        .project-body {
-            padding: 20px;
-        }
-
-        .project-body p {
-            color: #a0a0c0;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
-        }
-        
-        .project-card:hover .project-body p {
-            color: #00f7ff;
-            transform: translateX(3px);
-            text-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
-        }
-
-        .project-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #00f7ff, #b013b0);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-weight: 500;
-            box-shadow: 0 4px 20px rgba(0, 247, 255, 0.4), 0 0 10px rgba(176, 19, 176, 0.3);
-        }
-
-        .project-link:hover {
-            background: linear-gradient(135deg, #ff006e, #00f7ff);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.6), 0 0 20px rgba(0, 247, 255, 0.5);
-            color: #fff;
-        }
-
-        footer {
-            text-align: center;
-            color: white;
-            padding: 30px 20px;
-            opacity: 0.9;
-            transition: all 0.4s ease;
-        }
-
-        .stats {
+        /* NAVIGATION */
+        .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-bottom: 50px;
             flex-wrap: wrap;
         }
 
-        .stat {
-            text-align: center;
+        .nav-tab {
+            padding: 10px 25px;
+            border: 2px solid transparent;
+            background: rgba(176, 19, 176, 0.2);
+            color: #a0a0d0;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
             transition: all 0.4s ease;
         }
-        
-        .stat:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 10px #00f7ff);
+
+        .nav-tab:first-child {
+            background: linear-gradient(135deg, #b013b0, #00f7ff);
+            color: #fff;
+            border-color: #b013b0;
         }
 
-        .stat-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #00f7ff;
-            transition: all 0.4s ease, text-shadow 0.4s ease;
-        }
-        
-        .stat:hover .stat-number {
-            color: #ff006e;
-            text-shadow: 0 0 15px #ff006e, 0 0 30px #00f7ff;
+        .nav-tab:hover {
+            background: linear-gradient(135deg, #ff006e, #b013b0);
+            color: #fff;
+            border-color: #ff006e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 0, 110, 0.3);
         }
 
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            transition: all 0.4s ease;
-            color: #00f7ff;
+        /* PROJECTS GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
         }
-        
-        .stat:hover .stat-label {
+
+        .project-card {
+            background: linear-gradient(135deg, #1a1a3f 0%, #0f0f2e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 247, 255, 0.1), transparent);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
             opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 247, 255, 0.2);
+        }
+
+        /* Individual Card Colors */
+        .project-card.card-1 {
+            border-color: #ff9900;
+        }
+        .project-card.card-1:hover {
+            box-shadow: 0 25px 60px rgba(255, 153, 0, 0.3);
+            border-color: #ffb347;
+        }
+
+        .project-card.card-2 {
+            border-color: #b013b0;
+        }
+        .project-card.card-2:hover {
+            box-shadow: 0 25px 60px rgba(176, 19, 176, 0.3);
+            border-color: #d11bd1;
+        }
+
+        .project-card.card-3 {
+            border-color: #00d9ff;
+        }
+        .project-card.card-3:hover {
+            box-shadow: 0 25px 60px rgba(0, 217, 255, 0.3);
+            border-color: #00f7ff;
+        }
+
+        .project-card.card-4 {
+            border-color: #00d084;
+        }
+        .project-card.card-4:hover {
+            box-shadow: 0 25px 60px rgba(0, 208, 132, 0.3);
+            border-color: #00ff99;
+        }
+
+        .project-card.card-5 {
+            border-color: #ff6b35;
+        }
+        .project-card.card-5:hover {
+            box-shadow: 0 25px 60px rgba(255, 107, 53, 0.3);
+            border-color: #ff8555;
+        }
+
+        .project-card.card-6 {
+            border-color: #d946ef;
+        }
+        .project-card.card-6:hover {
+            box-shadow: 0 25px 60px rgba(217, 70, 239, 0.3);
+            border-color: #f472b6;
+        }
+
+        .project-card.card-7 {
+            border-color: #00d9ff;
+        }
+        .project-card.card-7:hover {
+            box-shadow: 0 25px 60px rgba(0, 217, 255, 0.3);
+            border-color: #00f7ff;
+        }
+
+        .project-card.card-8 {
+            border-color: #ff006e;
+        }
+        .project-card.card-8:hover {
+            box-shadow: 0 25px 60px rgba(255, 0, 110, 0.3);
+            border-color: #ff1493;
+        }
+
+        .project-card.card-9 {
+            border-color: #00d9ff;
+        }
+        .project-card.card-9:hover {
+            box-shadow: 0 25px 60px rgba(0, 217, 255, 0.3);
+            border-color: #00f7ff;
+        }
+
+        /* PROJECT THUMB */
+        .project-thumb {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(176, 19, 176, 0.2), rgba(0, 247, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-thumb img {
+            transform: scale(1.05);
+        }
+
+        .project-thumb::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 247, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        /* PROJECT HEADER */
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 5px 12px;
+            background: rgba(176, 19, 176, 0.3);
+            border: 1px solid #b013b0;
+            border-radius: 15px;
             color: #b013b0;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .project-card:hover .project-category {
+            background: rgba(176, 19, 176, 0.6);
+            box-shadow: 0 0 10px rgba(176, 19, 176, 0.4);
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-title {
+            transform: translateX(5px);
+        }
+
+        .project-desc {
+            color: #a0a0d0;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-desc {
+            color: #00f7ff;
+        }
+
+        /* TECH BADGES */
+        .tech-badges {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            padding: 5px 10px;
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid #00f7ff;
+            border-radius: 10px;
+            color: #00f7ff;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(0, 247, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        /* VIEW PROJECT LINK */
+        .view-project {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #ff006e;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .view-project::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .view-project:hover {
+            color: #00f7ff;
+            transform: translateX(3px);
+        }
+
+        .view-project:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(176, 19, 176, 0.2), rgba(0, 247, 255, 0.1));
+            border: 2px solid rgba(176, 19, 176, 0.4);
+            border-radius: 15px;
+            padding: 50px 40px;
+            text-align: center;
+            margin-bottom: 40px;
+            transition: all 0.4s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .cta-section:hover {
+            border-color: #ff006e;
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.2);
+        }
+
+        .cta-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .cta-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .cta-text p {
+            color: #a0a0d0;
+            font-size: 1rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #ff006e, #b013b0);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.3);
+            white-space: nowrap;
+        }
+
+        .cta-button::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 0, 110, 0.5);
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            border-top: 1px solid rgba(176, 19, 176, 0.2);
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            header h1 {
+            .main-title {
                 font-size: 2rem;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .stats {
-                gap: 20px;
+            .cta-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-text {
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- HEADER SECTION -->
-        <header>
-            <h1>🎨 Figma Design Portfolio</h1>
-            <p>Mobile App & Web Interface Design Projects</p>
-        </header>
+        <!-- HEADER -->
+        <div class="header-top">
+            <div class="designer-badge">👨‍💻 UI/UX DESIGNER</div>
+            <h1 class="main-title">Figma Design <span>Portfolio</span></h1>
+            <p class="subtitle">Mobile App & Web Interface Design Projects</p>
+        </div>
 
-        <!-- PROJECTS GRID SECTION -->
-        <main class="projects-grid">
+        <!-- NAVIGATION -->
+        <div class="nav-tabs">
+            <div class="nav-tab">✨ All Projects</div>
+            <div class="nav-tab">📱 Mobile Apps</div>
+            <div class="nav-tab">🌐 Web Interfaces</div>
+            <div class="nav-tab">📊 Dashboards</div>
+        </div>
+
+        <!-- PROJECTS GRID -->
+        <div class="projects-grid">
             <!-- Project 1: Burger App -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>🍔 Burger App</h2>
+            <div class="project-card card-1">
+                <div class="project-thumb">
+                    <img src="./Figma Design Burger APP/Menu 1.png" alt="Burger App">
                 </div>
-                <div class="project-body">
-                    <p>A complete food ordering application design featuring home screens, menu navigation, order management, and payment flow.</p>
-                    <a href="./Figma Design Burger APP" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Mobile App</span>
+                    <h3 class="project-title">Burger App</h3>
+                    <p class="project-desc">A complete food ordering application design featuring home screens, menu navigation, order management, and payment flow.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Burger APP" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 2: Capstone -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>📋 Capstone Project</h2>
+            <div class="project-card card-2">
+                <div class="project-thumb">
+                    <img src="./Figma Design Capstone/QUIZ 21.png" alt="Capstone Project">
                 </div>
-                <div class="project-body">
-                    <p>A comprehensive capstone design project showcasing complete UI/UX flows and interactions for a complex application.</p>
-                    <a href="./Figma Design Capstone" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">Capstone Project</h3>
+                    <p class="project-desc">A comprehensive capstone design project showcasing complete UI/UX flows and interactions for a complex application.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Capstone" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 3: G-Shock -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>⌚ G-Shock Store</h2>
+            <div class="project-card card-3">
+                <div class="project-thumb">
+                    <img src="./Figma Design Gshock/assets/HomeScreen.png" alt="G-Shock Store">
                 </div>
-                <div class="project-body">
-                    <p>E-commerce design for G-Shock watch retail platform with product showcase and purchase flows.</p>
-                    <a href="./Figma Design Gshock" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">G-Shock Store</h3>
+                    <p class="project-desc">E-commerce design for G-Shock watch retail platform with product showcase and purchase flows.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Gshock" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 4: Intern Program -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>👨‍💼 Intern Program</h2>
+            <div class="project-card card-4">
+                <div class="project-thumb">
+                    <img src="./Figma Design Intern/HOME SCREEN.png" alt="Intern Program">
                 </div>
-                <div class="project-body">
-                    <p>Design for an internship management platform with onboarding, task tracking, and communication features.</p>
-                    <a href="./Figma Design Intern" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">Intern Program</h3>
+                    <p class="project-desc">Design for an internship management platform with onboarding, task tracking, and communication features.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Intern" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 5: Nike Store -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>👟 Nike Store</h2>
+            <div class="project-card card-5">
+                <div class="project-thumb">
+                    <img src="./Figma Design Nike Store/NIKE.png" alt="Nike Store">
                 </div>
-                <div class="project-body">
-                    <p>Modern e-commerce design for Nike shoe retail with product browsing, filtering, and checkout experience.</p>
-                    <a href="./Figma Design Nike Store" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">Nike Store</h3>
+                    <p class="project-desc">Modern e-commerce design for Nike shoe retail with product browsing, filtering, and checkout experience.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Nike Store" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 6: PetPatrol -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>🐾 PetPatrol</h2>
+            <div class="project-card card-6">
+                <div class="project-thumb">
+                    <img src="./Figma Design PetPatrol/🏠 Home Screen.png" alt="PetPatrol">
                 </div>
-                <div class="project-body">
-                    <p>Pet care and management application featuring pet profiles, scheduling, health tracking, and emergency services.</p>
-                    <a href="./Figma Design PetPatrol" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Mobile App</span>
+                    <h3 class="project-title">PetPatrol</h3>
+                    <p class="project-desc">Pet care and management application featuring pet profiles, scheduling, health tracking, and emergency services.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design PetPatrol" class="view-project">View Project</a>
                 </div>
             </div>
 
             <!-- Project 7: UrdaGo -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>🚗 UrdaGo</h2>
+            <div class="project-card card-7">
+                <div class="project-thumb">
+                    <img src="./Figma Design UrdaGo/5. Passenger Home.png" alt="UrdaGo">
                 </div>
-                <div class="project-body">
-                    <p>Ride-sharing application design with driver/passenger interfaces, booking flow, and real-time tracking.</p>
-                    <a href="./Figma Design UrdaGo" class="project-link">View Project</a>
-                </div>
-            </div>
-
-            <!-- Project 8: Victory Booking App -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>🎫 Victory Booking</h2>
-                </div>
-                <div class="project-body">
-                    <p>Event booking and ticketing application with venue selection, seat mapping, and payment integration.</p>
-                    <a href="./Figma Design Victory  Booking App" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Mobile App</span>
+                    <h3 class="project-title">UrdaGo</h3>
+                    <p class="project-desc">Ride-sharing application design with driver/passenger interfaces, booking flow, and real-time tracking.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design UrdaGo" class="view-project">View Project</a>
                 </div>
             </div>
 
-            <!-- Project 9: Web Random UI -->
-            <div class="project-card">
-                <div class="project-header">
-                    <h2>🌐 Web UI Design</h2>
+            <!-- Project 8: Victory Booking -->
+            <div class="project-card card-8">
+                <div class="project-thumb">
+                    <img src="./Figma Design Victory  Booking App/HOMEPAGE.png" alt="Victory Booking">
                 </div>
-                <div class="project-body">
-                    <p>Collection of web interface designs and UI components for various web applications and services.</p>
-                    <a href="./Figma Design Web Random UI" class="project-link">View Project</a>
+                <div class="project-info">
+                    <span class="project-category">Mobile App</span>
+                    <h3 class="project-title">Victory Booking</h3>
+                    <p class="project-desc">Event booking and ticketing application with venue selection, seat mapping, and payment integration.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Victory  Booking App" class="view-project">View Project</a>
                 </div>
             </div>
-        </main>
 
-        <!-- FOOTER SECTION -->
+            <!-- Project 9: Web UI Design -->
+            <div class="project-card card-9">
+                <div class="project-thumb">
+                    <img src="./Figma Design Web Random UI/Web.png" alt="Web UI Design">
+                </div>
+                <div class="project-info">
+                    <span class="project-category">Web Design</span>
+                    <h3 class="project-title">Web UI Design</h3>
+                    <p class="project-desc">Collection of web interface designs and UI components for various web applications and services.</p>
+                    <div class="tech-badges">
+                        <span class="badge">🎨 Figma</span>
+                        <span class="badge">⚡ Figam</span>
+                        <span class="badge">🔧 Prototype</span>
+                    </div>
+                    <a href="./Figma Design Web Random UI" class="view-project">View Project</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="cta-section">
+            <div class="cta-text">
+                <h3>Interested in working together?</h3>
+                <p>Let's create something amazing</p>
+            </div>
+            <a href="mailto:contact@example.com" class="cta-button">Get In Touch</a>
+        </div>
+
+        <!-- FOOTER -->
         <footer>
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-number">9</div>
-                    <div class="stat-label">Projects</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">∞</div>
-                    <div class="stat-label">Creativity</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Dedication</div>
-                </div>
-            </div>
-            <p style="margin-top: 30px;">&copy; 2024-2026 Figma Design Portfolio. All designs reserved.</p>
+            <p>&copy; 2024-2026 Figma Design Portfolio. All designs reserved.</p>
         </footer>
     </div>
 </body>
