@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figma Mobile App Designs Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0d0221 0%, #1a0033 50%, #0f0f3d 100%);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            transition: all 0.4s ease;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #00f7ff, 0 0 40px #ff006e;
+            transition: transform 0.4s ease, text-shadow 0.4s ease;
+        }
+        
+        header h1:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 30px #00f7ff, 0 0 60px #ff006e, 0 0 20px #b013b0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        header:hover p {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: #1a1a3f;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 247, 255, 0.1), inset 0 0 20px rgba(255, 0, 110, 0.05);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+            cursor: pointer;
+            border: 3px solid #00f7ff;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 247, 255, 0.4), 0 0 40px rgba(255, 0, 110, 0.3), inset 0 0 30px rgba(0, 247, 255, 0.1);
+            border-color: #ff006e;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #ff006e 0%, #00f7ff 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.3);
+        }
+
+        .project-header h2 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            transition: transform 0.4s ease, text-shadow 0.4s ease;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .project-card:hover .project-header h2 {
+            transform: scale(1.1);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-body p {
+            color: #a0a0c0;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            transition: color 0.4s ease, transform 0.4s ease, text-shadow 0.4s ease;
+        }
+        
+        .project-card:hover .project-body p {
+            color: #00f7ff;
+            transform: translateX(3px);
+            text-shadow: 0 0 10px rgba(0, 247, 255, 0.4);
+        }
+
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #00f7ff, #b013b0);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 500;
+            box-shadow: 0 4px 20px rgba(0, 247, 255, 0.4), 0 0 10px rgba(176, 19, 176, 0.3);
+        }
+
+        .project-link:hover {
+            background: linear-gradient(135deg, #ff006e, #00f7ff);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 0, 110, 0.6), 0 0 20px rgba(0, 247, 255, 0.5);
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+            opacity: 0.9;
+            transition: all 0.4s ease;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        
+        .stat:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px #00f7ff);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00f7ff;
+            transition: all 0.4s ease, text-shadow 0.4s ease;
+        }
+        
+        .stat:hover .stat-number {
+            color: #ff006e;
+            text-shadow: 0 0 15px #ff006e, 0 0 30px #00f7ff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            transition: all 0.4s ease;
+            color: #00f7ff;
+        }
+        
+        .stat:hover .stat-label {
+            opacity: 1;
+            color: #b013b0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER SECTION -->
+        <header>
+            <h1>🎨 Figma Design Portfolio</h1>
+            <p>Mobile App & Web Interface Design Projects</p>
+        </header>
+
+        <!-- PROJECTS GRID SECTION -->
+        <main class="projects-grid">
+            <!-- Project 1: Burger App -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>🍔 Burger App</h2>
+                </div>
+                <div class="project-body">
+                    <p>A complete food ordering application design featuring home screens, menu navigation, order management, and payment flow.</p>
+                    <a href="./Figma Design Burger APP" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 2: Capstone -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>📋 Capstone Project</h2>
+                </div>
+                <div class="project-body">
+                    <p>A comprehensive capstone design project showcasing complete UI/UX flows and interactions for a complex application.</p>
+                    <a href="./Figma Design Capstone" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 3: G-Shock -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>⌚ G-Shock Store</h2>
+                </div>
+                <div class="project-body">
+                    <p>E-commerce design for G-Shock watch retail platform with product showcase and purchase flows.</p>
+                    <a href="./Figma Design Gshock" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 4: Intern Program -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>👨‍💼 Intern Program</h2>
+                </div>
+                <div class="project-body">
+                    <p>Design for an internship management platform with onboarding, task tracking, and communication features.</p>
+                    <a href="./Figma Design Intern" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 5: Nike Store -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>👟 Nike Store</h2>
+                </div>
+                <div class="project-body">
+                    <p>Modern e-commerce design for Nike shoe retail with product browsing, filtering, and checkout experience.</p>
+                    <a href="./Figma Design Nike Store" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 6: PetPatrol -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>🐾 PetPatrol</h2>
+                </div>
+                <div class="project-body">
+                    <p>Pet care and management application featuring pet profiles, scheduling, health tracking, and emergency services.</p>
+                    <a href="./Figma Design PetPatrol" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 7: UrdaGo -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>🚗 UrdaGo</h2>
+                </div>
+                <div class="project-body">
+                    <p>Ride-sharing application design with driver/passenger interfaces, booking flow, and real-time tracking.</p>
+                    <a href="./Figma Design UrdaGo" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 8: Victory Booking App -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>🎫 Victory Booking</h2>
+                </div>
+                <div class="project-body">
+                    <p>Event booking and ticketing application with venue selection, seat mapping, and payment integration.</p>
+                    <a href="./Figma Design Victory  Booking App" class="project-link">View Project</a>
+                </div>
+            </div>
+
+            <!-- Project 9: Web Random UI -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2>🌐 Web UI Design</h2>
+                </div>
+                <div class="project-body">
+                    <p>Collection of web interface designs and UI components for various web applications and services.</p>
+                    <a href="./Figma Design Web Random UI" class="project-link">View Project</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- FOOTER SECTION -->
+        <footer>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">9</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Creativity</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Dedication</div>
+                </div>
+            </div>
+            <p style="margin-top: 30px;">&copy; 2024-2026 Figma Design Portfolio. All designs reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
